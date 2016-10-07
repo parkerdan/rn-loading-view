@@ -1,0 +1,24 @@
+{
+  "name": "rn-loading-view",
+  "version": "1.0.0",
+  "description": "react-native loading view, combines loading indicator and text",
+  "main": "LoadingView.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parkerdan/rn-loading-view.git"
+  },
+  "keywords": [
+    "react-native",
+    "loading",
+    "loading-view"
+  ],
+  "author": "Dan Parker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/parkerdan/rn-loading-view/issues"
+  },
+  "homepage": "https://github.com/parkerdan/rn-loading-view#readme"
+}
