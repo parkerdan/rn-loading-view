@@ -1,21 +1,33 @@
 # RN-Loading-View
 
-Just combines loading indicator with optional text into one.
+Just combines loading indicator with optional text into one component so you can quickly construct loading views
 
 * `npm install rn-loading-view --save`
 
-<br>
-![Example One](./ExampleOne.png)
 
-![Example Two](./ExampleTwo.png)
 
+### Props
+
+| Prop | Type | Description |
+| ---  | ---  | ---         |
+| size | either `small` or `large` | the loading indicator size |
+| animating | boolean | should it animate?, default is yes |
+| color | string | color of loading indicator |
+| text | string | optional text to display |
+| textStyle | object | styles applied to the text |
+
+size: React.PropTypes.oneOf(['small','large']),
+animating: React.PropTypes.bool,
+color: React.PropTypes.string,
+text: React.PropTypes.string,
+textStyle: React.PropTypes.object
 
 
 
 ```js
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import LoadingView from 'rn-search-bar';
+import LoadingView from 'rn-loading-view';
 
 class LoadingViewExampleOne extends Component {
   render(){
@@ -53,3 +65,6 @@ class LoadingViewExampleTwo extends Component {
 
 }
 ```
+![Example One](./ExampleOne.png)
+
+![Example Two](./ExampleTwo.png)
