@@ -1,6 +1,6 @@
 # RN-Loading-View
 
-Just combines loading indicator with optional text into one component so you can quickly construct loading views
+Just combines loading indicator with optional text and button into one component so you can quickly construct loading views
 
 * `npm install rn-loading-view --save`
 
@@ -10,61 +10,48 @@ Just combines loading indicator with optional text into one component so you can
 
 | Prop | Type | Description |
 | ---  | ---  | ---         |
-| size | either `small` or `large` | the loading indicator size |
-| animating | boolean | should it animate?, default is yes |
-| color | string | color of loading indicator |
-| text | string | optional text to display |
-| textStyle | object | styles applied to the text |
-
-size: React.PropTypes.oneOf(['small','large']),
-animating: React.PropTypes.bool,
-color: React.PropTypes.string,
-text: React.PropTypes.string,
-textStyle: React.PropTypes.object
-
+| spinnerProps | object | ActivityIndicator Props|
+| text | string | text to display below the spinner |
+| textProps | object |  Text Props |
+| renderButton | boolean | render a button below the text |
+| buttonText | string | text in the button |
+| buttonTextProps | object | Text Props for button text |
+| buttonProps | object | TouchableOpacity Props |
 
 
 ```js
-import React, { Component } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import LoadingView from 'rn-loading-view';
 
-class LoadingViewExampleOne extends Component {
+class LoadingViewExampleOne extends React.Component {
   render(){
     return(
+
       <LoadingView
-        size={'large'}
-        animating={true}
-        color={'deeppink'}
-        text={'Hold on here...I\'m loading' }
-        textStyle={{
-          color: 'red',
-          fontSize: 20,
-        }}
+        text={ 'Hold on here...I\'m loading' }
+        textProps={{ style: {color:'red',fontSize:20} }}
+        spinnerProps={{size:'large',color:'deeppink'}}
       />
+
     )
   };
 
-class LoadingViewExampleTwo extends Component {
+class LoadingViewExampleTwo extends React.Component {
   render(){
     return(
-      <View style={{flex:1,backgroundColor:'cyan'}}>
         <LoadingView
-          size={'large'}
-          animating={true}
-          color={'black'}
-          text={'Loading....' }
-          textStyle={{
-            color: 'black',
-            fontSize: 20,
+          text={ 'Getting information...' }
+          renderButton={ (some condition) ? true:false }
+          spinnerProps={{ size:'small' }}
+          buttonText={ 'Try Again?' }
+          buttonProps={{
+            style: {backgroundColor:'red',padding:10},
+            onPress: () => console.log('do stuff')
           }}
         />
-      </View>
     )
   };
 
 }
 ```
-![Example One](./ExampleOne.png)
-
-![Example Two](./ExampleTwo.png)
