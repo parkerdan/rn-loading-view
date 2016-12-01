@@ -1,43 +1,29 @@
 'use strict'
 
-import React, { Component } from 'react';
-import { View, ActivityIndicator, Text, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { View, ActivityIndicator, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-export default class LoadingView extends Component {
-  constructor(){
-    super();
-    this.state = {
-      buttonY: 0,
-    }
-  }
+const styles = StyleSheet.create({container:{flex:1,alignItems:'center',justifyContent:'center'}})
+
+export default class LoadingView extends React.Component {
  render(){
-   return(
-     <View style={{
-       flex:1,
-       alignItems:'center',
-       justifyContent:'center'
-     }}>
-       <ActivityIndicator {...this.props.spinnerProps}/>
-       <Text
-         onLayout={ (e) => this.setState({buttonY:(e.nativeEvent.layout.y + e.nativeEvent.layout.height)}) }
-         {...this.props.textProps} >
-         {this.props.text}
-       </Text>
-       {this.renderButton()}
-     </View>
-   )
- };
-
- renderButton(){
-   if (this.props.renderButton) {
-     return(
-       <View style={{position:'absolute',top:this.buttonY,left:0,right:0,alignItems:'center'}}>
+   let { buttonText, buttonProps, renderButton, buttonTextProps, spinnerProps, textProps, text } = this.props;
+   if (renderButton) {
+     var SCREEN = (
+       <View style={styles.container}>
          <TouchableOpacity {...this.props.buttonProps}>
            <Text {...this.props.buttonTextProps}>{this.props.buttonText}</Text>
          </TouchableOpacity>
        </View>
      )
+   } else {
+     var SCREEN = (
+       <View style={styles.container}>
+         <ActivityIndicator {...this.props.spinnerProps}/>
+         <Text {...this.props.textProps} >{this.props.text}</Text>
+       </View>
+     )
    }
- }
-
-};
+   return SCREEN
+ };
+}

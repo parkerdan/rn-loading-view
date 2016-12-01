@@ -2,6 +2,8 @@
 
 Just combines loading indicator with optional text and button into one component so you can quickly construct loading views
 
+If the button is rendered via `renderButton={ true }` the ActivityIndicator and Text will not show.
+
 * `npm install rn-loading-view --save`
 
 
